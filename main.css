@@ -1,53 +1,53 @@
+@import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css');
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    /* NO SELECT + HIGHLIGHT COLOR */
-    user-select: none;
+    flex-shrink: 0;
 }
 body {
     width: 100%;
-    height: 100vh;
-
+    min-height: 100vh;
     background: #0f0c29;  /* fallback for old browsers */
     background: -webkit-linear-gradient(to right, #21262d, #202328, #21262d);  /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to right, #21262d, #202328, #21262d); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    
-    display: flex;
-    justify-content: center;
-    align-items: center;
     font-family: sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
+    justify-content: space-between;
 }
 button {
     border: 0;
     outline: 0;
 }
+
 .container {
-    margin: 0px 0;
-    padding: 0px 25px;
+    margin: auto;
+    padding: 20px;
     height: 100%;
-    width: 70%;
+    min-height: 500px;
+    max-height: 820px;
+    width: 100%;
+    min-width: 240px;
+    max-width: 640px;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
 }
 .container h2.title {
     font-size: 2rem;
-    /* margin: 10px -5px; */
-    /* margin-bottom: 40px; */
     color: rgb(235, 235, 235);
 }
-.title {
-    margin-top: 10px;
-}
+
 .result {
-    position: relative;
     width: 100%;
-    height: 65px;
+    height: 80px;
     overflow: hidden;
-    
     color: #fff;
     border-radius: 10px;
-    /* box-shadow: 0 15px 35px rgba(0,0,0,.5); */
-    /* background-color: rgba(255,255,255,.068); */
     border-width: .5px;
     border-style: solid;
     border-color: rgba(255,255,255,.425);
@@ -71,7 +71,6 @@ button {
     transform: translate(-50%, -50%) scale(0);
     transition: all 350ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
     cursor: pointer;
-    z-index: 2;
 }
 .result #copy-btn:active {
     box-shadow: 0 0 0 200px rgba(255, 255, 255, 0.08);
@@ -92,7 +91,6 @@ button {
     pointer-events: none;
     user-select: none;
 }
-
 
 .slider {
     position: relative;
@@ -127,7 +125,6 @@ button {
     color: #fff;
 }
 #slider {
-    -webkit-appearance: none;
     width: calc(100% - (70px));
     height: 2px;
     border-radius: 5px;
@@ -162,7 +159,6 @@ button {
 #slider::-moz-range-thumb:hover {
     background: #d4d4d4;
 }
-
 
 .settings {
     position: relative;
@@ -231,7 +227,6 @@ button {
     background: #909090;
 }
 
-
 .btn.generate {
     user-select: none;
     position: relative;
@@ -244,29 +239,128 @@ button {
     background: #ff4747;  /* fallback for old browsers */
     background: -webkit-linear-gradient(to right, #ff4747, #ff8585);  /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to right, #ff4747, #ff8585); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-    /* background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%); */
     letter-spacing: 2.5px;
+    font-family: ;
     font-weight: bold;
     text-transform: uppercase;
     cursor: pointer;
-    transition: all 100ms ease;
+    transition: all 200ms ease;
 }
 .btn.generate:active {
     transform: translateY(-3%);
     box-shadow: 0 4px 8px rgba(255, 255, 255, 0.08);
 }
 
-a {
-    margin: 0 20px;
-    color: #fff;
-    font-size: 2rem;
-    transition: all 400ms ease;
+
+/* FOOTER */
+.home-footer {
+    width: 100%;
+    height: 180px;
+    background-color: #1f1f1f;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
-a:hover {
-    color: #222;
+/* Social Links (Buttons) */
+.social-div {
+    height: 40px;
+    width: 50%;
+    max-width: 260px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: auto;
+}
+/* Icons */
+.social-link {
+    margin: 0;
+    color: #fff;
+    border-radius: 6px;
+    text-align: center;
+    text-decoration: none;
+    font-family: fontawesome;
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    padding-top: 10px;
+    -o-transition: all .5s;
+    -webkit-transition: all .5s;
+    -moz-transition: all .5s;
+    transition: all .5s;
+    -webkit-font-smoothing: antialiased;
+}
+/* Social Link Colors */
+.email {background: #8a2be2;}
+.email:hover {background: #a871db;}
+.linkedin {background: #378fe9;}
+.linkedin:hover {background: #7eaedd;}
+.github {background: #333333;}
+.github:hover {background: #575757;}
+/* pop-up text */
+.social-link span {
+    color: #666;
+    position: absolute;
+    font-family: sans-serif;
+    bottom: 0;
+    left: -25px;
+    right: -25px;
+    padding: 5px 7px;
+    z-index: 1;
+    font-size: 14px;
+    border-radius: 2px;
+    background: #f5f5f5;
+    visibility: hidden;
+    opacity: 0;
+    -o-transition: all .5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    -webkit-transition: all .5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    -moz-transition: all .5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    transition: all .5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+/* pop-up text arrow */
+.social-link span:before {
+    content: '';
+    width: 0; 
+    height: 0; 
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid #fff;
+    position: absolute;
+    bottom: -5px;
+    left: 40px;
+}
+/* text pops up when icon is in hover state */
+.social-link:hover span {
+    bottom: 50px;
+    visibility: visible;
+    opacity: 1;
+}
+/* font awesome icons */
+.social-link:nth-of-type(1):before {
+    content: '\f003';
+}
+.social-link:nth-of-type(2):before {
+    content: '\f0e1';
+}
+.social-link:nth-of-type(3):before {
+    content: '\f113';
+}
+/* Copyright Tag */
+.copyright-div {
+    width: 300px;
+    height: 50px;
+    text-align: center;
+}
+.copyright{
+    font-family: 'Roboto Slab', sans-serif;
+    font-size: 15px;
+    color: #fff;
 }
 
-.footer {
-    margin-top: 10px;
+@media only screen and (min-width: 30px) and (max-width: 849px) {
+    /* FOR MOBILE */
+    .title {
+        font-size: 1.5rem;
+    }
 }
