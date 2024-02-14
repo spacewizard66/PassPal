@@ -5,13 +5,13 @@
 		<!-- Required meta tags -->
 		<meta name="viewport" content ="width=device-width,initial-scale=1,user-scalable=yes" charset="UTF-8">
 
-		<link rel="stylesheet" href="main.css" />
+		<link rel="stylesheet" href="/build/index.css" />
 
 		<title>Password Generator</title>
 	</head>
 
 	<body>
-		<div class="container">
+		<section class="container">
 			<h2 class="title">Password Generator</h2>
 
 			<div class="length slider" data-min="4" data-max="64">
@@ -49,30 +49,26 @@
 				<div class="result_title field-title">Generated Password</div>
 				<div class="result_viewbox" id="result"></div>
 			</div>
+		</section>
 
-			<!-- <div class="footer">
-				<a onclick="openGithubRepo()" style="cursor: pointer">
-					<img src="icon/github.svg" width="40px" />
+		<!-- FOOTER -->
+		<footer class="footer">
+			<section class="footer__social">
+				<a class="footer__social__link email" href="mailto:mason4work@outlook.com?subject=Portfolio" target="_blank">
+					<span>Email</span>
 				</a>
-			</div> -->
-		</div>
-
-			<!-- FOOTER -->
-			<footer class="home-footer">
-				<div class="social-div">
-					<a class="social-link email" href="mailto:mason4work@outlook.com?subject=Portfolio" target="_blank"><span>Email</span></a>
-					<a class="social-link linkedin" href="https://www.linkedin.com/in/mason-galat/" target="_blank"><span>LinkedIn</span></a>
-					<a class="social-link github" href="https://github.com/spacewizard66" target="_blank"><span>Github</span></a>
-				</div>
-				<!-- COPYRIGHT TAG -->
-				<div class="copyright-div">
-					<p class="copyright">© 2023 Mason Galat - All Rights Reserved</p>
-				</div>
-			</footer>
-		
-
-		
-
-		<script type="text/javascript" src="main.js"></script>
+				<a class="footer__social__link linkedin" href="https://www.linkedin.com/in/mason-galat/" target="_blank">
+					<span>LinkedIn</span>
+				</a>
+				<a class="footer__social__link github" href="https://github.com/spacewizard66" target="_blank">
+					<span>Github</span>
+				</a>
+			</section>
+			<!-- COPYRIGHT TAG -->
+			<small class="footer__copyright">
+				<!-- <p class="copyright"></p> -->
+			</small>
+		</footer>
+		<script type="text/javascript" src="index.js"></script>
 	</body>
 </html>
