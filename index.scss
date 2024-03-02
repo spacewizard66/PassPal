@@ -1,15 +1,38 @@
 @import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
 
+/* Color Variables */
+$bg: #ffffff;
+$bg-dark: #111827;
+$nav: #f3f4f6;
+$nav-dark: #1f2937;
+$purple: #7154fc;
+$font-purple: #5e58f8;
+
+$test1: #4ac6d2;
+$test2: #16519f;
+$test3: #4ecb4a;
+
+
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     flex-shrink: 0;
 }
-body {
+button {
+    border: 0;
+    outline: 0;
+}
+
+
+
+
+.body {
     width: 100%;
     min-height: 100vh;
-    background: #0f0c29;  /* fallback for old browsers */
+    background-color: $bg;
+    /* background: #0f0c29; */  /* fallback for old browsers */
     /* background: -webkit-linear-gradient(to right, #21262d, #202328, #21262d); */  /* Chrome 10-25, Safari 5.1-6 */
     /* background: linear-gradient(to right, #21262d, #202328, #21262d); */ /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     font-family: sans-serif;
@@ -17,13 +40,84 @@ body {
     flex-direction: column;
     align-content: space-between;
     justify-content: space-between;
-}
-button {
-    border: 0;
-    outline: 0;
+    &--active {
+        background-color: $bg-dark;
+    }
 }
 
-.container {
+
+
+/**
+ * ^Navigation Bar
+ * 
+ * ^Bar at the top of page for user to interact with.
+ */
+.nav {
+    height: 60px;
+    width: 100%;
+    background-color: $nav;
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,0.1),0 1px 2px 0 rgba(0,0,0,0.06);
+    &__container {
+        height: 100%;
+        width: 640px;
+        margin: auto;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+    &__title {
+        /* height: 50px;
+        width: 50px; */
+        color: $font-purple;
+        &::before {
+            font-family: "fontawesome";
+            content: '\f023';
+            font-weight: 900;
+        }
+    }
+    &__toggle {
+        height: 40px;
+        width: 40px;
+        color: $font-purple;
+        background-color: $nav;
+        font-size: 2rem;
+        border-radius: 50%;
+        &::before {
+            font-family: "fontawesome";
+            content: '\f0eb';
+            font-weight: 900;
+        }
+        &:hover {
+            color: $test2;
+            font-weight: 400;
+            cursor: pointer;
+        }
+    }
+    /* Class name for when dark mode is active */
+    &--active {
+        background-color: $nav-dark;
+        .nav__title {
+            color: $bg;
+        }
+        & .nav__toggle {
+            color: $bg;
+            background-color: $nav-dark;
+            &::before {
+                content: '\f186';
+            }
+        }
+    }
+}
+
+
+
+/**
+ * ^Main Section
+ * 
+ * ^Includes entire page, except nav/footer.
+ */
+.main {
     margin: auto;
     padding: 20px;
     height: 100%;
@@ -35,62 +129,28 @@ button {
     text-align: center;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-content: center;
-}
-.container h2.title {
-    font-size: 2rem;
-    color: rgb(235, 235, 235);
+    &__subtitle {
+        font-size: 1.1rem;
+        color: $font-purple;
+        margin-bottom: 1.4rem;
+    }
+    &__title {
+        font-size: 3.2rem;
+        font-weight: 700;
+        color: black;
+        margin-bottom: 30%
+    }
+    /* Class name for when dark mode is active */
+    &--active {
+        .main__title {
+            color: $bg;
+        }
+    }
 }
 
-.result {
-    width: 100%;
-    height: 80px;
-    overflow: hidden;
-    color: #fff;
-    border-radius: 10px;
-    border-width: .5px;
-    border-style: solid;
-    border-color: rgba(255,255,255,.425);
-}
-.result_viewbox {
-    width: 100%;
-    height: 100%;
-    background: rgba(255, 255, 255, 0.08);
-    border-radius: 10px;
-    color: rgb(216, 216, 216);
-    text-align: center;
-    line-height: 65px;
-}
-.result #copy-btn {
-    position: absolute;
-    width: 38px;
-    height: 38px;
-    background: #fff;
-    border-radius: 50%;
-    opacity: 0;
-    transform: translate(-50%, -50%) scale(0);
-    transition: all 350ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    cursor: pointer;
-}
-.result #copy-btn:active {
-    box-shadow: 0 0 0 200px rgba(255, 255, 255, 0.08);
-}
-.result:hover #copy-btn {
-    opacity: 1;
-    transform: translate(-50%, -135%) scale(1.35);
-}
-.field-title {
-    position: absolute;
-    top: -10px;
-    left: 8px;
-    transform: translateY(-50%);
-    font-weight: 800;
-    color: rgba(255, 255, 255, 0.5);
-    text-transform: uppercase;
-    font-size: 0.65rem;
-    pointer-events: none;
-    user-select: none;
-}
+
 
 .slider {
     position: relative;
@@ -99,135 +159,214 @@ button {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: rgba(255, 255, 255, 0.08);
+    /* background: rgba(44, 44, 44, 0.348); */
     border-radius: 8px;
     margin: 20px 0;
-}
-.slider::before, .slider::after {
-    position: absolute;
-    color: #fff;
-    font-size: 0.9rem;
-    font-weight: bold;
-}
-.slider::before {
-    content: attr(data-min);
-    left: 10px;
-}
-.slider::after {
-    content: attr(data-max);
-    right: 10px;
-}
-.slider .length_title::after {
-    content: attr(data-length);
-    position: absolute;
-    right: -16px;
-    font-variant-numeric: tabular-nums;
-    color: #fff;
-}
-#slider {
-    width: calc(100% - (70px));
-    height: 2px;
-    border-radius: 5px;
-    background: rgba(255, 255, 255, 0.314);
-    outline: none;
-    padding: 0;
-    margin: 0;
-    cursor: pointer;
-}
-#slider::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background: #fff;
-    cursor: pointer;
-    transition: all 0.15s ease-in-out;
-}
-#slider::-webkit-slider-thumb:hover {
-    background: #d4d4d4;
-    transform: scale(1.2);
-}
-#slider::-moz-range-thumb {
-    width: 20px;
-    height: 20px;
-    border: 0;
-    border-radius: 50%;
-    background: #fff;
-    cursor: pointer;
-    transition: background 0.15s ease-in-out;
-}
-#slider::-moz-range-thumb:hover {
-    background: #d4d4d4;
+    /* border: solid 2px $purple; */
+    &::before,
+    &::after {
+        position: absolute;
+        color: $font-purple;
+        font-size: 1rem;
+        font-weight: bold;
+    }
+    &::before {
+        content: attr(data-min);
+        left: 6px;
+    }
+    &::after {
+        content: attr(data-max);
+        right: 6px;
+    }
+    &__title {
+        position: absolute;
+        top: -10px;
+        left: 0;
+        transform: translateY(-50%);
+        font-weight: 800;
+        color: $font-purple;
+        text-transform: uppercase;
+        font-size: 0.75rem;
+        pointer-events: none;
+        user-select: none;
+    }
+    &__title::after {
+        content: attr(data-length);
+        position: absolute;
+        /* right: -16px; */
+        /* font-variant-numeric: tabular-nums; */
+        color: $font-purple;
+    }
+    &__input {
+        width: calc(100% - (70px));
+        height: 3px;
+        border-radius: 5px;
+        background: $purple;
+        outline: none;
+        padding: 0;
+        margin: 0;
+        cursor: pointer;
+    }
+    &__input::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        width: 26px;
+        height: 26px;
+        border-radius: 50%;
+        background: $purple;
+        cursor: pointer;
+        transition: all 0.15s ease-in-out;
+    }
+    &__input::-webkit-slider-thumb:hover {
+        width: 14px;
+        height: 14px;
+        background: #ffffff;
+        border: 6px solid $purple;
+        transition: background 0.15s ease-in-out;
+    }
+    &__input::-moz-range-thumb {
+        border-radius: 50%;
+        background: $purple;
+        cursor: pointer;
+        transition: background 0.15s ease-in-out;
+
+        width: 14px;
+        height: 14px;
+        border: 6px solid $purple;
+        transition: background 0.15s ease-in-out;
+    }
+    &__input::-moz-range-thumb:hover {
+        width: 14px;
+        height: 14px;
+        background: #ffffff;
+        border: 6px solid $purple;
+        transition: background 0.15s ease-in-out;
+    }
+    &--active {
+        .slider__title,
+        .slider__title::after {
+            color: $bg;
+        }
+        &::before,
+        &::after {
+            color: $bg;
+        }
+    }
 }
 
+
+
+/**
+ * ^Settings
+ * 
+ * ^Section for the optional settings the user can apply.
+ */
 .settings {
+    width: 80%;
+    padding: 20px;
+    margin: 0 auto 4rem auto;
     position: relative;
     height: auto;
     display: flex;
     flex-direction: column;
-}
-.settings .setting {
-    position: relative;
-    width: 100%;
-    height: calc(65px - 10px);
-    background: rgba(255, 255, 255, 0.08);
+    /* justify-content: center; */
+    align-items: flex-start;
+    background: $nav;
     border-radius: 8px;
-    display: flex;
-    align-items: center;
-    padding: 10px 25px;
-    color: #fff;
-    margin-bottom: 8px;
-}
-.settings .setting input {
-    opacity: 0;
-    position: absolute;
-}
-.settings .setting input + label {
-    user-select: none;
-}
-.settings .setting input + label::before, .settings .setting input + label::after {
-    content: "";
-    position: absolute;
-    transition: 150ms cubic-bezier(0.24, 0, 0.5, 1);
-    transform: translateY(-50%);
-    top: 50%;
-    right: 10px;
-    cursor: pointer;
-}
-.settings .setting input + label::before {
-    height: 30px;
-    width: 50px;
-    border-radius: 30px;
-    background: rgba(214, 214, 214, 0.434);
-}
-.settings label {
-    font-size: 1.1em;
-}
-.settings .setting input + label::after {
-    height: 24px;
-    width: 24px;
-    border-radius: 60px;
-    right: 32px;
-    background: #fff;
-}
-.settings .setting input:checked + label:before {
-    background: #ff4747;
-    transition: all 150ms cubic-bezier(0, 0, 0, 0.1);
-}
-.settings .setting input:checked + label:after {
-    right: 14px;
-}
-.settings .setting input:disabled + label:before, .settings .setting input:disabled + label:after {
-    cursor: not-allowed;
-}
-.settings .setting input:disabled + label:before {
-    background: #4f4f6a;
-}
-.settings .setting input:disabled + label:after {
-    background: #909090;
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,0.1),0 1px 2px 0 rgba(0,0,0,0.06);
+    &__title {
+        position: absolute;
+        top: -10px;
+        /* left: 8px; */
+        transform: translateY(-50%);
+        font-weight: 800;
+        color: $font-purple;
+        text-transform: uppercase;
+        font-size: 0.75rem;
+        pointer-events: none;
+        user-select: none;
+    }
+    &__setting {
+        position: relative;
+        width: 100%;
+        height: 2.8rem;
+        background: $nav;
+        /* border: solid 2px $purple; */
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        padding: 10px 25px;
+        /* color: $font-purple; */
+        margin-bottom: 8px;
+        & input {
+            opacity: 0;
+            position: absolute;
+        }
+        & input + label {
+            user-select: none;
+        }
+        & input + label::before,
+        & input + label::after {
+            content: "";
+            position: absolute;
+            transition: 150ms cubic-bezier(0.24, 0, 0.5, 1);
+            transform: translateY(-50%);
+            top: 50%;
+            right: 10px;
+            cursor: pointer;
+        }
+        & input + label::before {
+            height: 30px;
+            width: 50px;
+            border-radius: 30px;
+            background: rgba(167, 167, 167, 0.783);
+        }
+        & input + label::after {
+            height: 24px;
+            width: 24px;
+            border-radius: 60px;
+            right: 32px;
+            background: #fff;
+        }
+        & input:checked + label:before {
+            background: $purple;
+            transition: all 150ms cubic-bezier(0, 0, 0, 0.1);
+        }
+        & input:checked + label:after {
+            right: 14px;
+        }
+        & input:disabled + label:before,
+        & input:disabled + label:after {
+            cursor: not-allowed;
+        }
+        & input:disabled + label:before {
+            background: #4f4f6a;
+        }
+        & input:disabled + label:after {
+            background: #909090;
+        }
+    }
+    & label {
+        font-size: 1.2em;
+        font-weight: 600;
+    }
+    /* Class name for when dark mode is active */
+    &--active {
+        background-color: $nav-dark;
+        color: $bg;
+        .settings__setting {
+            background-color: $nav-dark;
+        }
+    }
 }
 
-.btn.generate {
+
+
+/**
+ * ^Generate Button
+ * 
+ * ^The button that generates the password.
+ */
+.generate-btn {
     user-select: none;
     position: relative;
     width: 100%;
@@ -240,19 +379,74 @@ button {
     background: -webkit-linear-gradient(to right, #ff4747, #ff8585);  /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to right, #ff4747, #ff8585); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     letter-spacing: 2.5px;
-    /* font-family: ; */
     font-weight: bold;
     text-transform: uppercase;
     cursor: pointer;
     transition: all 200ms ease;
-}
-.btn.generate:active {
-    transform: translateY(-3%);
-    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.08);
+    &:active {  /* when clicked */
+        transform: translateY(-3%);
+        box-shadow: 0 4px 8px rgba(255, 255, 255, 0.08);
+    }
 }
 
 
-/* FOOTER */
+
+.result {
+    width: 100%;
+    height: 80px;
+    overflow: hidden;
+    color: #fff;
+    border-radius: 10px;
+    border-width: .5px;
+    border-style: solid;
+    border-color: rgba(255,255,255,.425);
+    &__title {
+        position: absolute;
+        top: -10px;
+        left: 8px;
+        transform: translateY(-50%);
+        font-weight: 800;
+        color: rgba(255, 255, 255, 0.5);
+        text-transform: uppercase;
+        font-size: 0.65rem;
+        pointer-events: none;
+        user-select: none;
+    }
+    &__viewbox {
+        width: 100%;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.08);
+        border-radius: 10px;
+        color: rgb(0, 0, 0);
+        text-align: center;
+        line-height: 65px;
+    }
+    & #copy-btn {
+        position: absolute;
+        width: 38px;
+        height: 38px;
+        background: #fff;
+        border-radius: 50%;
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0);
+        transition: all 350ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        cursor: pointer;
+    }
+    & #copy-btn:active {
+        box-shadow: 0 0 0 200px rgba(255, 255, 255, 0.08);
+    }
+    &:hover #copy-btn {
+        opacity: 1;
+        transform: translate(-50%, -135%) scale(1.35);
+    }
+}
+
+
+/**
+ * ^Footer
+ * 
+ * ^The footer is displayed at the bottom of page.
+ */
 .footer {
     width: 100%;
     height: 180px;
@@ -261,7 +455,7 @@ button {
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
-    &__social { /* Social Links (Buttons) */
+    &__socials { /* Social Links (Buttons) */
         height: 40px;
         width: 50%;
         max-width: 260px;
@@ -269,61 +463,61 @@ button {
         justify-content: space-between;
         align-items: center;
         /* margin: auto; */
-        &__link { /* Icons */
-            margin: 0;
-            color: #fff;
-            border-radius: 6px;
-            text-align: center;
-            text-decoration: none;
-            font-family: fontawesome;
-            position: relative;
-            display: inline-block;
-            width: 40px;
-            height: 40px;
-            padding-top: 10px;
-            -o-transition: all .5s;
-            -webkit-transition: all .5s;
-            -moz-transition: all .5s;
-            transition: all .5s;
-            -webkit-font-smoothing: antialiased;
-            &:hover span { /* text pops up when icon is in hover state */
-                bottom: 50px;
-                visibility: visible;
-                opacity: 1;
-            }
-            /* Font Awesome icons */
-            &:nth-of-type(1):before {content: '\f003';}
-            &:nth-of-type(2):before {content: '\f0e1';}
-            &:nth-of-type(3):before {content: '\f113';}
-            & span { /* pop-up text */
-                color: #666;
+    }
+    &__link { /* Icons */
+        margin: 0;
+        color: #fff;
+        border-radius: 6px;
+        text-align: center;
+        text-decoration: none;
+        font-family: fontawesome;
+        position: relative;
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        padding-top: 10px;
+        -o-transition: all .5s;
+        -webkit-transition: all .5s;
+        -moz-transition: all .5s;
+        transition: all .5s;
+        -webkit-font-smoothing: antialiased;
+        &:hover span { /* text pops up when icon is in hover state */
+            bottom: 50px;
+            visibility: visible;
+            opacity: 1;
+        }
+        /* Font Awesome icons */
+        &:nth-of-type(1):before {content: '\f003';}
+        &:nth-of-type(2):before {content: '\f0e1';}
+        &:nth-of-type(3):before {content: '\f113';}
+        & span { /* pop-up text */
+            color: #666;
+            position: absolute;
+            font-family: sans-serif;
+            bottom: 0;
+            left: -25px;
+            right: -25px;
+            padding: 5px 7px;
+            z-index: 1;
+            font-size: 14px;
+            border-radius: 2px;
+            background: #f5f5f5;
+            visibility: hidden;
+            opacity: 0;
+            -o-transition: all .5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            -webkit-transition: all .5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            -moz-transition: all .5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            transition: all .5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            &:before { /* pop-up text arrow */
+                content: '';
+                width: 0;
+                height: 0;
+                border-left: 5px solid transparent;
+                border-right: 5px solid transparent;
+                border-top: 5px solid #fff;
                 position: absolute;
-                font-family: sans-serif;
-                bottom: 0;
-                left: -25px;
-                right: -25px;
-                padding: 5px 7px;
-                z-index: 1;
-                font-size: 14px;
-                border-radius: 2px;
-                background: #f5f5f5;
-                visibility: hidden;
-                opacity: 0;
-                -o-transition: all .5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-                -webkit-transition: all .5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-                -moz-transition: all .5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-                transition: all .5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-                &:before { /* pop-up text arrow */
-                    content: '';
-                    width: 0;
-                    height: 0;
-                    border-left: 5px solid transparent;
-                    border-right: 5px solid transparent;
-                    border-top: 5px solid #fff;
-                    position: absolute;
-                    bottom: -5px;
-                    left: 40px;
-                }
+                bottom: -5px;
+                left: 40px;
             }
         }
     }
@@ -346,7 +540,7 @@ button {
 
 @media only screen and (min-width: 30px) and (max-width: 849px) {
     /* FOR MOBILE */
-    .title {
-        font-size: 1.5rem;
+    .main__title {
+        /* font-size: 1.5rem; */
     }
 }

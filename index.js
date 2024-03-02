@@ -105,8 +105,25 @@ function passwordGenerate(len, upper, lower, number, symbol) {
 	showPassword(password);
 }
 
+
+body = document.body;
+nav = document.body.querySelector(".nav");
+main = document.body.querySelector(".main");
+settings = document.body.querySelector(".settings");
+x = document.body.querySelector(".slider");
+// Dark Mode/Light Mode Toggle Button
+darkModeButton = document.querySelector(".nav__toggle");
+darkModeButton.addEventListener('click', () => {
+	nav.classList.toggle("nav--active");
+	body.classList.toggle("body--active");
+	main.classList.toggle("main--active");
+	x.classList.toggle("slider--active");
+	settings.classList.toggle("settings--active");
+});
+
+
 const slider = document.querySelector(".slider");
-const sliderValue = document.querySelector(".length_title");
+const sliderValue = document.querySelector(".slider__title");
 const sliderProperties = {
 	fill: "#38EF7D",
 	background: "rgba(255, 255, 255, 0.214)",
@@ -124,10 +141,12 @@ applyFill(slider.querySelector("input"));
 // Function responsible for creating the trailing color and setting the fill //
 function applyFill(slider) {
 	// Calculates slider % //
-	const percentage = (100 * (slider.value - slider.min)) / (slider.max - slider.min);
+	const percentage =
+		(100 * (slider.value - slider.min)) / (slider.max - slider.min);
 
 	// Uses % to calculate gradient color background //
-	const bg = `linear-gradient(90deg, ${sliderProperties.fill} ${percentage}%, ${sliderProperties.background} ${percentage + 0.1}%)`;
+	const bg = `linear-gradient(90deg, ${sliderProperties.fill
+		} ${percentage}%, ${sliderProperties.background} ${percentage + 0.1}%)`;
 
 	// Sets slider gradient background //
 	slider.style.backround = bg;
@@ -186,12 +205,18 @@ function copyPassword() {
 // Getting current year for footer //
 var d = new Date();
 var currYear = d.getFullYear();
-document.querySelector(".footer__copyright").innerText = `© ${currYear}, Made with ❤️ by Mason Galat.`
+document.querySelector(
+	".footer__copyright"
+).innerText = `© ${currYear}, Made with ❤️ by Mason Galat.`;
+
+
 
 // Disable right click //
-document.addEventListener(
+/* document.addEventListener(
 	"contextmenu",
 	function (e) {
 		e.preventDefault();
-	}, false
+	},
+	false
 );
+ */

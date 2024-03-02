@@ -2,73 +2,88 @@
 
 <html lang="en">
 	<head>
-		<!-- Required meta tags -->
 		<meta name="viewport" content ="width=device-width,initial-scale=1,user-scalable=yes" charset="UTF-8">
 
-		<link rel="stylesheet" href="/build/index.css" />
+		<link rel="stylesheet" href="build/index.css" />
 
-		<title>Password Generator</title>
+		<title>PassPal</title>
 	</head>
 
-	<body>
-		<section class="container">
-			<h2 class="title">Password Generator</h2>
+	<body class="body">
+		<!-- Navigation Bar -->
+		<nav class="nav">
+			<div class="nav__container">
+				<h1 class="nav__title">
+					PassPal
+				</h1>
+				<button class="nav__toggle">
+					
+				</button>
+			</div>
+		</nav>
 
-			<div class="length slider" data-min="4" data-max="64">
-				<div class="length_title field-title" data-length="0">
-					length:
-				</div>
-				<input id="slider" type="range" min="4" max="64" value="32" />
+		<!-- Main Section -->
+		<main class="main">
+			<h2 class="main__subtitle">A lightweight random password generator</h2>
+			<h1 class="main__title">Generate a Password</h1>
+
+			<!-- Slider Input -->
+			<div class="slider" data-min="4" data-max="64">
+				<h2 class="slider__title" data-length="0">
+					length:&emsp;
+				</h2>
+				<input class="slider__input" type="range" min="4" max="64" value="32" />
 			</div>
 
-			<div class="settings">
-				<span class="settings_title field-title">settings</span>
-				<div class="setting">
+			<!-- Settings -->
+			<section class="settings">
+				<!-- <h2 class="settings__title">settings</h2> -->
+				<div class="settings__setting">
 					<input type="checkbox" id="uppercase" checked />
-					<label for="uppercase">Include Uppercase</label>
+					<label for="uppercase">Uppercase</label>
 				</div>
-				<div class="setting">
+				<div class="settings__setting">
 					<input type="checkbox" id="lowercase" checked />
-					<label for="lowercase">Include Lowercase</label>
+					<label for="lowercase">Lowercase</label>
 				</div>
-				<div class="setting">
+				<div class="settings__setting">
 					<input type="checkbox" id="number" checked />
-					<label for="number">Include Numbers</label>
+					<label for="number">Numbers</label>
 				</div>
-				<div class="setting">
+				<div class="settings__setting">
 					<input type="checkbox" id="symbol" checked />
-					<label for="symbol">Include Symbols</label>
+					<label for="symbol">Symbols</label>
 				</div>
-			</div>
+			</section>
 
-			<button class="btn generate" id="generate">
+			<!-- Generate Button -->
+			<button class="generate-btn" id="generate">
 				Generate Password
 			</button>
 
+			<!-- Password Results -->
 			<div class="result">
-				<div class="result_title field-title">Generated Password</div>
-				<div class="result_viewbox" id="result"></div>
+				<div class="result__title">Generated Password</div>
+				<div class="result__viewbox" id="result"></div>
 			</div>
-		</section>
+		</main>
 
-		<!-- FOOTER -->
+		<!-- Footer Section -->
 		<footer class="footer">
-			<section class="footer__social">
-				<a class="footer__social__link email" href="mailto:mason4work@outlook.com?subject=Portfolio" target="_blank">
+			<section class="footer__socials">
+				<a class="footer__link email" href="mailto:mason4work@outlook.com?subject=Portfolio" target="_blank">
 					<span>Email</span>
 				</a>
-				<a class="footer__social__link linkedin" href="https://www.linkedin.com/in/mason-galat/" target="_blank">
+				<a class="footer__link linkedin" href="https://www.linkedin.com/in/mason-galat/" target="_blank">
 					<span>LinkedIn</span>
 				</a>
-				<a class="footer__social__link github" href="https://github.com/spacewizard66" target="_blank">
+				<a class="footer__link github" href="https://github.com/spacewizard66" target="_blank">
 					<span>Github</span>
 				</a>
 			</section>
-			<!-- COPYRIGHT TAG -->
-			<small class="footer__copyright">
-				<!-- <p class="copyright"></p> -->
-			</small>
+			<small class="footer__copyright"></small>
 		</footer>
+
 		<script type="text/javascript" src="index.js"></script>
 	</body>
 </html>
