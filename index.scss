@@ -22,6 +22,9 @@ $test3: #4ecb4a;
     box-sizing: border-box;
     flex-shrink: 0;
 }
+*:focus {
+    outline: none;
+}
 button {
     border: 0;
     outline: 0;
@@ -204,7 +207,7 @@ button {
     }
     &__input {
         width: calc(100% - (70px));
-        height: 3px;
+        height: 5px;
         border-radius: 5px;
         background: $purple;
         outline: none;
@@ -212,39 +215,25 @@ button {
         margin: 0;
         cursor: pointer;
     }
-    &__input::-webkit-slider-thumb {
-        -webkit-appearance: none;
-        width: 26px;
-        height: 26px;
+    &__input::-webkit-slider-thumb,
+    &__input::-moz-range-thumb {
+        height: 32px;
+        width: 32px;
+        border: solid 6px $purple;
         border-radius: 50%;
-        background: $purple;
+        background: $bg;
         cursor: pointer;
         transition: all 0.15s ease-in-out;
+        -webkit-appearance: none;
+        -moz-appearance: none;
     }
-    &__input::-webkit-slider-thumb:hover {
-        width: 14px;
-        height: 14px;
-        background: #ffffff;
-        border: 6px solid $purple;
-        transition: background 0.15s ease-in-out;
-    }
-    &__input::-moz-range-thumb {
-        border-radius: 50%;
-        background: $purple;
-        cursor: pointer;
-        transition: background 0.15s ease-in-out;
-
-        width: 14px;
-        height: 14px;
-        border: 6px solid $purple;
-        transition: background 0.15s ease-in-out;
-    }
+    &__input::-webkit-slider-thumb:hover,
     &__input::-moz-range-thumb:hover {
-        width: 14px;
-        height: 14px;
-        background: #ffffff;
-        border: 6px solid $purple;
-        transition: background 0.15s ease-in-out;
+        width: 32px;
+        height: 32px;
+        background: $bg;
+        border: none;
+        transition: all 0.15s ease-in-out;
     }
     &--active {
         .slider__title,
