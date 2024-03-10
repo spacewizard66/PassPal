@@ -342,7 +342,6 @@ button {
   width: 90%;
   color: #ffffff;
   background: #7154fc;
-  /* border: none; */
   border-bottom: 6px solid #5841cd;
   border-radius: 0.8rem;
   padding: 16px;
@@ -352,15 +351,10 @@ button {
   transition: all 100ms ease;
   font-family: Arial, Helvetica, sans-serif;
 }
-.generate__btn:hover {
-  margin-top: 2px;
-  border-bottom-width: 3px;
-  cursor: pointer;
-  box-shadow: 0 0 10px 15px rgba(113, 84, 252, 0.2);
-}
 .generate__btn:active {
   margin-top: 5px;
   border-bottom-width: 0;
+  box-shadow: 0 0 10px 15px rgba(113, 84, 252, 0.2);
 }
 
 .result {
@@ -553,6 +547,16 @@ button {
   }
   .generate__btn {
     font-size: 1.5rem;
+  }
+  .generate__btn:hover {
+    margin-top: 2px;
+    border-bottom-width: 3px;
+    cursor: pointer;
+    box-shadow: 0 0 10px 15px rgba(113, 84, 252, 0.2);
+  }
+  .generate__btn:active {
+    margin-top: 5px;
+    border-bottom-width: 0;
   }
 }
 

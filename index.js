@@ -133,12 +133,12 @@ slider.querySelector("input").addEventListener("input", (event) => {
 
 
 // Checks which options are selected and plugs in to Password Generator //
+const uppercase = document.getElementById("uppercase").checked;
+const lowercase = document.getElementById("lowercase").checked;
+const number = document.getElementById("number").checked;
+const symbol = document.getElementById("symbol").checked;
 const generateButton = document.getElementById("generate");
 generateButton.addEventListener("click", () => {
-	let uppercase = document.getElementById("uppercase").checked;
-	let lowercase = document.getElementById("lowercase").checked;
-	let number = document.getElementById("number").checked;
-	let symbol = document.getElementById("symbol").checked;
 	passwordGenerate(
 		sliderValue.getAttribute("data-length"),
 		uppercase,
