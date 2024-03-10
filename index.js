@@ -33,7 +33,7 @@ function passwordGenerate(len, upper, lower, number, symbol) {
 			"W",
 			"X",
 			"Y",
-			"Z",
+			"Z"
 		]);
 	}
 	if (lower) {
@@ -63,7 +63,7 @@ function passwordGenerate(len, upper, lower, number, symbol) {
 			"w",
 			"x",
 			"y",
-			"z",
+			"z"
 		]);
 	}
 	if (number) {
@@ -77,7 +77,7 @@ function passwordGenerate(len, upper, lower, number, symbol) {
 			"6",
 			"7",
 			"8",
-			"9",
+			"9"
 		]);
 	}
 	if (symbol) {
@@ -93,10 +93,9 @@ function passwordGenerate(len, upper, lower, number, symbol) {
 			"-",
 			"+",
 			"?",
-			"#",
+			"#"
 		]);
 	}
-
 	// Randomizer that picks characters for password //
 	var password = "";
 	for (let i = 0; i < len; i++) {
@@ -106,52 +105,32 @@ function passwordGenerate(len, upper, lower, number, symbol) {
 }
 
 
-body = document.body;
-nav = document.body.querySelector(".nav");
-main = document.body.querySelector(".main");
-settings = document.body.querySelector(".settings");
-x = document.body.querySelector(".slider");
+const body = document.body;
+const nav = document.body.querySelector(".nav");
+const main = document.body.querySelector(".main");
+const settings = document.body.querySelector(".settings");
+
 // Dark Mode/Light Mode Toggle Button
 darkModeButton = document.querySelector(".nav__toggle");
 darkModeButton.addEventListener('click', () => {
 	nav.classList.toggle("nav--active");
 	body.classList.toggle("body--active");
 	main.classList.toggle("main--active");
-	x.classList.toggle("slider--active");
+	slider.classList.toggle("slider--active");
 	settings.classList.toggle("settings--active");
 });
 
 
 const slider = document.querySelector(".slider");
 const sliderValue = document.querySelector(".slider__title");
-const sliderProperties = {
-	fill: "#38EF7D",
-	background: "rgba(255, 255, 255, 0.214)",
-};
 
-// Using Event Listener to apply the fill and change value of text //
+// Sets default slider value //
+sliderValue.setAttribute("data-length", 35);
+// Using Event Listener to the slider change value accordingly //
 slider.querySelector("input").addEventListener("input", (event) => {
 	sliderValue.setAttribute("data-length", event.target.value);
-	applyFill(event.target);
 });
 
-// Selecting range input and passing it to applyFill function //
-applyFill(slider.querySelector("input"));
-
-// Function responsible for creating the trailing color and setting the fill //
-function applyFill(slider) {
-	// Calculates slider % //
-	const percentage =
-		(100 * (slider.value - slider.min)) / (slider.max - slider.min);
-
-	// Uses % to calculate gradient color background //
-	const bg = `linear-gradient(90deg, ${sliderProperties.fill
-		} ${percentage}%, ${sliderProperties.background} ${percentage + 0.1}%)`;
-
-	// Sets slider gradient background //
-	slider.style.backround = bg;
-	sliderValue.setAttribute("data-length", slider.value);
-}
 
 // Checks which options are selected and plugs in to Password Generator //
 const generateButton = document.getElementById("generate");
@@ -182,10 +161,9 @@ function showPassword(password) {
 	// document.querySelector('.result').innerHTML += '<button id="copy-btn" onclick="copyPassword()"><img src="copy.svg" width="16px"></button>'; //
 }
 
-// If no option is selected //
+// Error if no option is selected //
 function showError() {
-	document.getElementById("result").innerText =
-		"Please select at least one attribute";
+	document.getElementById("result").innerText = "Please select at least one attribute";
 	if (document.getElementById("copy-btn")) {
 		document.getElementById("copy-btn").remove();
 	}
