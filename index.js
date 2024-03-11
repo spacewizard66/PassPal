@@ -109,6 +109,7 @@ const body = document.body;
 const nav = document.body.querySelector(".nav");
 const main = document.body.querySelector(".main");
 const settings = document.body.querySelector(".settings");
+const result = document.body.querySelector(".result");
 
 // Dark Mode/Light Mode Toggle Button
 darkModeButton = document.querySelector(".nav__toggle");
@@ -118,6 +119,7 @@ darkModeButton.addEventListener('click', () => {
 	main.classList.toggle("main--active");
 	slider.classList.toggle("slider--active");
 	settings.classList.toggle("settings--active");
+	result.classList.toggle("result--active");
 });
 
 
@@ -133,12 +135,12 @@ slider.querySelector("input").addEventListener("input", (event) => {
 
 
 // Checks which options are selected and plugs in to Password Generator //
-const uppercase = document.getElementById("uppercase").checked;
-const lowercase = document.getElementById("lowercase").checked;
-const number = document.getElementById("number").checked;
-const symbol = document.getElementById("symbol").checked;
 const generateButton = document.getElementById("generate");
 generateButton.addEventListener("click", () => {
+	const uppercase = document.getElementById("uppercase").checked;
+	const lowercase = document.getElementById("lowercase").checked;
+	const number = document.getElementById("number").checked;
+	const symbol = document.getElementById("symbol").checked;
 	passwordGenerate(
 		sliderValue.getAttribute("data-length"),
 		uppercase,
@@ -148,15 +150,12 @@ generateButton.addEventListener("click", () => {
 	);
 });
 
-const copyInfo = document.querySelector(".result__info.right");
-const copiedInfo = document.querySelector(".result__info.left");
-const copyBtn = document.querySelector("#copy-btn");
 
 function showPassword(password) {
 	document.getElementById("result").innerText = password;
 	if (!document.getElementById("copy-btn")) {
 		document.querySelector(".result").innerHTML +=
-			'<button id="copy-btn" onclick="copyPassword()"><img src="icon/copy.svg" width="16px"></button>';
+		'<button id="copy-btn" onclick="copyPassword()"><img src="icon/copy.svg" width="16px"></button>';
 	}
 	// document.querySelector('.result').innerHTML += '<button id="copy-btn" onclick="copyPassword()"><img src="copy.svg" width="16px"></button>'; //
 }
@@ -169,6 +168,9 @@ function showError() {
 	}
 }
 
+const copyInfo = document.querySelector(".result__info.right");
+const copiedInfo = document.querySelector(".result__info.left");
+const copyBtn = document.querySelector("#copy-btn");
 // Copy password to clipboard //
 function copyPassword() {
 	const textarea = document.createElement("textarea");
@@ -181,8 +183,8 @@ function copyPassword() {
 }
 
 // Getting current year for footer //
-var d = new Date();
-var currYear = d.getFullYear();
+const d = new Date();
+const currYear = d.getFullYear();
 document.querySelector(
 	".footer__copyright"
 ).innerText = `© ${currYear}, Made with ❤️ by Mason Galat.`;
