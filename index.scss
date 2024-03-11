@@ -388,11 +388,15 @@ button {
     height: 80px;
     overflow: hidden;
     /* color: #fff; */
-    background: $light-secondary;
     border-radius: 0.8rem;
     border-width: 0.5px;
     border-style: solid;
     border-color: rgba(255,255,255,.425);
+    background: $light-secondary;
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,0.1),0 1px 2px 0 rgba(0,0,0,0.06);
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
     &__title {
         position: absolute;
         top: -10px;
@@ -406,10 +410,10 @@ button {
         user-select: none;
     }
     &__viewbox {
-        width: 100%;
         height: 100%;
+        width: 90%;
         background: rgba(255, 255, 255, 0.08);
-        border-radius: 0.8rem;
+        /* border-radius: 0.8rem; */
         color: black;
         font-size: 1.3rem;
         text-align: center;
@@ -425,7 +429,7 @@ button {
             color: #fff;
         }
     }
-    & #copy-btn {
+    /* & #copy-btn {
         position: absolute;
         width: 38px;
         height: 38px;
@@ -442,9 +446,28 @@ button {
     &:hover #copy-btn {
         opacity: 1;
         transform: translate(-50%, -135%) scale(1.35);
-    }
+    } */
 }
 
+.copy-test {
+    height: 100%;
+    width: 20%;
+    position:sticky;
+    right: 0;
+    color: $light;
+    background: $purple;
+    cursor: pointer;
+    font-size: 1.6rem;
+    transition: font-size 100ms ease;
+    &::before {
+        font-family: "fontawesome";
+        content: '\f0ea';
+        font-weight: 900;
+    }
+    &:active {
+        font-size: 1.3rem;
+    }
+}
 
 /**
  * ^Footer
@@ -580,5 +603,9 @@ button {
                 border-bottom-width: 0;
             }
         }
+    }
+
+    .copy-test {
+        width: 10%;
     }
 }
