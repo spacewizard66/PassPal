@@ -65,8 +65,6 @@ button {
         align-items: center;
     }
     &__title {
-        /* height: 50px;
-        width: 50px; */
         color: $font-purple;
         &::before {
             font-family: "fontawesome";
@@ -124,8 +122,6 @@ button {
     width: 100%;
     padding: 20px;
     margin: 0;
-    /* min-height: 500px; */
-    /* max-height: 820px; */
     min-width: 240px;
     max-width: 640px;
     text-align: center;
@@ -136,7 +132,6 @@ button {
     &__subtitle {
         font-size: 0.8rem;
         color: $font-purple;
-        /* margin-bottom: 1rem; */
     }
     &__title {
         font-size: 1.8rem;
@@ -161,10 +156,8 @@ button {
     display: flex;
     justify-content: center;
     align-items: center;
-    /* background: rgba(44, 44, 44, 0.348); */
     border-radius: 8px;
     margin-top: 20px;
-    /* border: solid 2px $purple; */
     &::before,
     &::after {
         position: absolute;
@@ -195,40 +188,39 @@ button {
     &__title::after {
         content: attr(data-length);
         position: absolute;
-        /* right: -16px; */
-        /* font-variant-numeric: tabular-nums; */
         color: $font-purple;
     }
     &__input {
+        height: 8px;
         width: calc(100% - (70px));
-        height: 5px;
         border: none;
         border-radius: 5px;
         color: $purple;
         background: $purple;
-        outline: none;
         padding: 0;
         margin: 0;
-    }
-    &__input::-webkit-slider-thumb,
-    &__input::-moz-range-thumb {
-        height: 32px;
-        width: 32px;
-        border: solid 6px $purple;
-        border-radius: 50%;
-        background: $light;
         cursor: pointer;
-        transition: all 0.15s ease-in-out;
-        -webkit-appearance: none;
-        -moz-appearance: none;
-    }
-    &__input::-webkit-slider-thumb:hover,
-    &__input::-moz-range-thumb:hover {
-        width: 32px;
-        height: 32px;
-        background: $light;
-        border: none;
-        transition: all 0.15s ease-in-out;
+        transition: all 150ms ease-in-out;
+        &:focus {
+            outline: none;
+        }
+        &, &::-webkit-slider-thumb {
+            -webkit-appearance: none;
+        }
+        &::-webkit-slider-thumb {
+            height: 30px;
+            width: 30px;
+            background: $light;
+            border: solid 3px $purple;
+            border-radius: 50%;
+        }
+        &::-moz-range-thumb {
+            height: 24px;
+            width: 24px;
+            background: $light;
+            border: solid 3px $purple;
+            border-radius: 50%;
+        }
     }
     &--active {
         .slider__title,
@@ -257,7 +249,6 @@ button {
     position: relative;
     display: flex;
     flex-direction: column;
-    /* justify-content: center; */
     align-items: flex-start;
     background: $light-secondary;
     border-radius: 0.8rem;
@@ -265,7 +256,6 @@ button {
     &__title {
         position: absolute;
         top: -10px;
-        /* left: 8px; */
         transform: translateY(-50%);
         font-weight: 800;
         color: $font-purple;
@@ -279,7 +269,6 @@ button {
         width: 100%;
         height: 2.8rem;
         background: $light-secondary;
-        /* border: solid 2px $purple; */
         border-radius: 8px;
         display: flex;
         align-items: center;
@@ -387,66 +376,32 @@ button {
     width: 100%;
     height: 80px;
     overflow: hidden;
-    /* color: #fff; */
     border-radius: 0.8rem;
-    border-width: 0.5px;
-    border-style: solid;
-    border-color: rgba(255,255,255,.425);
+    border: solid 2px $dark;
     background: $light-secondary;
     box-shadow: 0 1px 3px 0 rgba(0,0,0,0.1),0 1px 2px 0 rgba(0,0,0,0.06);
     display: flex;
     justify-content: flex-end;
     align-items: flex-end;
-    &__title {
-        position: absolute;
-        top: -10px;
-        left: 8px;
-        transform: translateY(-50%);
-        /* font-size: 1.1rem; */
-        font-weight: 800;
-        color: rgba(255, 255, 255, 0.5);
-        text-transform: uppercase;
-        pointer-events: none;
-        user-select: none;
-    }
     &__viewbox {
         height: 100%;
         width: 90%;
         background: rgba(255, 255, 255, 0.08);
-        /* border-radius: 0.8rem; */
         color: black;
-        font-size: 1.3rem;
+        font-size: 1.1rem;
         text-align: center;
-        /* line-height: 65px; */
         display: flex;
         justify-content: center;
         align-items: center;
         overflow-wrap: break-word;
     }
     &--active {
+        border: solid 2px $light;
         background: $dark-secondary;
         .result__viewbox {
             color: #fff;
         }
     }
-    /* & #copy-btn {
-        position: absolute;
-        width: 38px;
-        height: 38px;
-        background: #fff;
-        border-radius: 50%;
-        opacity: 0;
-        transform: translate(-50%, -50%) scale(0);
-        transition: all 350ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        cursor: pointer;
-    }
-    & #copy-btn:active {
-        box-shadow: 0 0 0 200px rgba(255, 255, 255, 0.08);
-    }
-    &:hover #copy-btn {
-        opacity: 1;
-        transform: translate(-50%, -135%) scale(1.35);
-    } */
 }
 
 .copy-test {
@@ -476,7 +431,7 @@ button {
  */
 .footer {
     width: 100%;
-    height: 180px;
+    height: 140px;
     background-color: #1f1f1f;
     display: flex;
     flex-direction: column;
@@ -491,23 +446,24 @@ button {
         align-items: center;
     }
     &__link { /* Icons */
+        height: 40px;
+        width: 40px;
         margin: 0;
         color: #fff;
         border-radius: 6px;
         text-align: center;
         text-decoration: none;
+        line-height: 40px;
         font-family: fontawesome;
         position: relative;
         display: inline-block;
-        width: 40px;
-        height: 40px;
-        padding-top: 10px;
+        /* padding-top: 10px; */
         -o-transition: all .5s;
         -webkit-transition: all .5s;
         -moz-transition: all .5s;
         transition: all .5s;
         -webkit-font-smoothing: antialiased;
-        &:hover span { /* text pops up when icon is in hover state */
+        &:hover span { /* text pops up when icon hovered */
             bottom: 50px;
             visibility: visible;
             opacity: 1;
@@ -517,7 +473,7 @@ button {
         &:nth-of-type(2):before {content: '\f0e1';}
         &:nth-of-type(3):before {content: '\f113';}
         & span { /* pop-up text */
-            color: #666;
+            color: $dark;
             position: absolute;
             font-family: sans-serif;
             bottom: 0;
@@ -526,10 +482,12 @@ button {
             padding: 5px 7px;
             z-index: 1;
             font-size: 14px;
-            border-radius: 2px;
+            border: solid 2px #1f1f1f;
+            border-radius: 3px;
             background: #f5f5f5;
             visibility: hidden;
             opacity: 0;
+            line-height: normal;
             -o-transition: all .5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
             -webkit-transition: all .5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
             -moz-transition: all .5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
@@ -589,7 +547,6 @@ button {
     }
 
     .generate {
-        /* margin-bottom: 10%; */
         &__btn {
             font-size: 1.5rem;
             &:hover {

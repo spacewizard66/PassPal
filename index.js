@@ -105,17 +105,18 @@ function passwordGenerate(len, upper, lower, number, symbol) {
 }
 
 
-const body = document.body;
+
 const nav = document.body.querySelector('.nav');
 const main = document.body.querySelector('.main');
 const settings = document.body.querySelector('.settings');
 const result = document.body.querySelector('.result');
+const resultViewbox = document.body.querySelector('.result__viewbox');
 
-// Dark Mode/Light Mode Toggle Button
+// Dark Mode/Light Mode Toggle Button //
 darkModeButton = document.querySelector('.nav__toggle');
 darkModeButton.addEventListener('click', () => {
+	document.body.classList.toggle('body--active');
 	nav.classList.toggle('nav--active');
-	body.classList.toggle('body--active');
 	main.classList.toggle('main--active');
 	slider.classList.toggle('slider--active');
 	settings.classList.toggle('settings--active');
@@ -127,7 +128,7 @@ const slider = document.querySelector('.slider');
 const sliderValue = document.querySelector('.slider__title');
 // Sets default slider value //
 sliderValue.setAttribute('data-length', 35);
-// changes slider value accordingly //
+// Changes slider value accordingly //
 slider.querySelector('input').addEventListener('input', (event) => {
 	sliderValue.setAttribute('data-length', event.target.value);
 });
@@ -151,12 +152,7 @@ generateButton.addEventListener('click', () => {
 
 
 function showPassword(password) {
-	document.getElementById('result').innerText = password;
-	/* if (!document.getElementById("copy-btn")) {
-		document.querySelector(".result").innerHTML +=
-		'<button id="copy-btn" onclick="copyPassword()"><img src="icon/copy.svg" width="16px"></button>';
-	} */
-	// document.querySelector('.result').innerHTML += '<button id="copy-btn" onclick="copyPassword()"><img src="copy.svg" width="16px"></button>'; //
+	resultViewbox.innerText = password;
 }
 
 
@@ -168,8 +164,7 @@ function showError() {
 
 // Copy password to clipboard //
 document.body.querySelector('.copy-test').addEventListener('click', () => {
-		if (!navigator.clipboard) {
-			// Clipboard API not available
+	if (!navigator.clipboard) { // Clipboard API not available //
 			return
 		}
 		const password = result.innerText;
@@ -189,11 +184,7 @@ document.querySelector('.footer__copyright').innerText = `© ${currentYear}, Mad
 
 
 // Disable right click //
-/* document.addEventListener(
-	"contextmenu",
-	function (e) {
-		e.preventDefault();
-	},
-	false
-);
- */
+/* document.addEventListener('contextmenu', (event) => {
+		event.preventDefault();
+	}, false
+); */
